@@ -1,0 +1,27 @@
+{% extends 'base.html' %} {% block content %}
+<div class="container">
+  <div class="jumbotron">
+    
+    {% if not form.instance.pk %}
+    <h1><u>Add company here </u></h1>
+    <form enctype="multipart/form-data" method="POST">
+      {% csrf_token %} 
+      {{form.as_p}}
+
+      <input type="submit" class="btn btn-primary" value="Add Company" />
+    </form>
+      
+    {%else %}
+      <h1>Edit Company Details </h1>
+      <form enctype="multipart/form-data" method="POST">
+        {% csrf_token %} 
+        {{form.as_p}}
+
+        <input type="submit" class="btn btn-warning" value="ADD" />
+      </form>
+    {% endif %}
+
+  </div>
+</div>
+
+{% endblock %}

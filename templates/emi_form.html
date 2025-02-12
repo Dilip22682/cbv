@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %} 
+<div class="container">
+    <div class="jumbotron">
+        {% comment %} {{ form.as_p}} {% endcomment %}
+        <h1><u>EMI Calculator </u></h1><br>
+        <h2>Calculate EMI for {{form.product_name}}</h2><br>
+            <h3>price is {{form.price}}</h3>
+            <form method="POST">
+                {% csrf_token %}
+
+                {%if not loan_exceeded %}
+                      Loan Amount: <input type="text" name="amount" id=""><br><br>
+                {% else %}
+                      <h1>Loan should not be greater than {{form.price}} </h1>
+                      {{error.as_P}}
+                {% endif %}
+                Rate of Intrest: <input type="text" name="rate" id=""><br><br>
+                Repayment in Months: <input type="text" name="months"><br><br>
+                <input type="submit" class="btn btn-primary" value="Calculate">
+            </form><br><br>
+            <h3 style="color:red">Total emi is {{ emi_per_month }}</h3>
+        </div>
+    </div>
+{% endblock %}
