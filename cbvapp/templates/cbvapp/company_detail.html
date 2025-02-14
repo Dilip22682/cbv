@@ -1,52 +1,69 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} {% block content %}
 
-{% block content %}
+<div class="container">
+  <div class="jumbotron">
+    <h1><u>{{company_info.name}} details page</u></h1>
+    <p>Company Ceo:{{company_info.CEO}}</p>
+    <p>Date of Origin:{{company_info.date_of_origin}}</p>
+    <p>Origin:{{company_info.origin}}</p>
+    <p>
+      <a href="{% url 'edit' pk=company_info.id %}" class="btn btn-info"
+        >Edit</a
+      >
+    </p>
+    <p>
+      <a href="{% url 'delete' pk=company_info.id %}" class="btn btn-danger"
+        >Delete</a
+      >
+    </p>
+    <hr />
 
-    <div class="container">
-        <div class="jumbotron">
+    <h1><u>List of {{company_info.name}} Products </u></h1>
+    {% for prod in company_info.companies.all %}
+    <p>product name:- {{ prod.product_name}}</p>
+    {% comment %}
+    <p>fuel type:-{{ prod.fuel_type}}</p>
+    <p>Milliage:-{{ prod.milliage}}</p>
+    <p>Tank Capacity:-{{ prod.tank_capacity}}</p>
+    <p>Top speed :-{{ prod.top_speed}}</p>
+    {% endcomment %}
 
-            <h1><u>{{company_info.name}} details page</u></h1>
-            <p>Company Ceo:{{company_info.CEO}}</p>
-            <p>Date of Origin:{{company_info.date_of_origin}}</p>
-            <p>Origin:{{company_info.origin}}</p>
-            <p><a href="{% url 'edit' pk=company_info.id %}" class="btn btn-info">Edit</a></p>
-            <p><a href="{% url 'delete' pk=company_info.id %}" class="btn btn-danger">Delete</a></p>
-            <hr>
-
-            <h1><u>List of {{company_info.name}} Products </u> </h1>
-            {% for prod in company_info.companies.all %}
-                <p> product name:- {{ prod.product_name}}</p>
-                {% comment %} <p> fuel type:-{{ prod.fuel_type}}</p>
-                <p>Milliage:-{{ prod.milliage}}</p>
-                <p> Tank Capacity:-{{ prod.tank_capacity}}</p>
-                <p> Top speed :-{{ prod.top_speed}}</p>
-                {% endcomment %}
-
-                <p> Price:-{{ prod.price}}</p>
-                {% comment %} 
-                <p> Color:-{{ prod.color}}</p>
-                <p>CC :-{{ prod.CC}}</p>
-                <p>company :-{{ prod.company}}</p>            {% endcomment %}
-
-                {% comment %} <input type="submit" value="EMI" class="btn btn-outline-info" href="{% url 'emi' product_info.id %} "id=""> {% endcomment %}
-
-            {% endfor %}
-            <h1>List of {{ company_info.name}} product </h1>
-            <div class="row">
-                {% for product in company_info.companies.all %}
-                    <div class="col-md-6">
-                        <div class="card card-body">
-                            <p>Bike name: {{product.product_name}}</p>
-                            <p>Price: {{product.price}}</p>
-                            <p><a href="{% url 'emi' id=product.id %}" class="btn btn-outline-info">EMI</a></p>
-                        </div>
-                    </div>
-                {% endfor %}
-            </div>
-
-          
+    <p>Price:-{{ prod.price}}</p>
+    {% comment %}
+    <p>Color:-{{ prod.color}}</p>
+    <p>CC :-{{ prod.CC}}</p>
+    <p>company :-{{ prod.company}}</p>
+    {% endcomment %} {% comment %}
+    <input
+      type="submit"
+      value="EMI"
+      class="btn btn-outline-info"
+      href="{% url 'emi' product_info.id %} "
+      id=""
+    />
+    {% endcomment %} {% endfor %}
+    <h1>List of {{ company_info.name}} product</h1>
+    <div class="row">
+      {% for product in company_info.companies.all %}
+      <div class="col-md-6">
+        <div class="card card-body">
+          <p>Bike name: {{product.product_name}}</p>
+          <p>Price: {{product.price}}</p>
+          {% if product.pro_image %}
+          <img src="{{ product.pro_image.url }}" alt="no image" />
+          {% else %}
+          <p>No image</p>
+          {% endif %}
+          <p>
+            <a href="{% url 'emi' id=product.id %}" class="btn btn-outline-info"
+              >EMI</a
+            >
+          </p>
         </div>
+      </div>
+      {% endfor %}
     </div>
-    
-    
+  </div>
+</div>
+
 {% endblock %}
