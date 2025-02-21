@@ -1,10 +1,50 @@
-{% extends 'base.html' %}
-
-{% block content %}
+{% extends 'base.html' %} {% load static %} {% block content %}
 <div class="container">
-    <div class="jumbotron">
-        <h1>Welcome to Dilip's Bike Agency</h1>
-        <div class="ph"><img src="" alt=""></div>
+  <div class="jumbotron">
+    <h1 style="text-align: center;">Welcome to Lexi's Bike Agency</h1>
+    {% comment %} <img
+    src="{% static 'bgimg/showroom.jpg'%}"
+      heigh="100%"
+      width="100%"
+      alt=""
+    /> {% endcomment %}
+
+
+
+
+    <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active" data-bs-interval="1000">
+      <img  class="d-block w-100" 
+    src="{% static 'bgimg/showroom.jpg'%}"
+      {% comment %} heigh="100%"
+      width="100%" {% endcomment %}
+      alt=""/>
     </div>
+    <div class="carousel-item" data-bs-interval="500">
+        <img  class="d-block w-100" 
+        src="{% static 'bgimg/royal2.webp'%}"
+        {% comment %} heigh="100%"
+        width="100%" {% endcomment %}
+        alt=""/>
+    </div>
+    <div class="carousel-item">
+        <img  class="d-block w-100" 
+        src="{% static 'bgimg/kawasaki.webp'%}"
+        heigh="50%"
+        width="50%" 
+        alt=""/>
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+  </div>
 </div>
 {% endblock %}
