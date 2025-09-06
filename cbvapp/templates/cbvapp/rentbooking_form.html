@@ -1,17 +1,48 @@
 {% extends 'base.html' %}
 
-{%block content %}
-<div class="container">
-    <div class="jumbotron">
-        <h1>Bikes for Rent  </h1>
-        <form action="{% url 'rent' %}" method="post">
+{% block content %}
+<div class="container mt-5">
+
+  <!-- Page Title -->
+  <div class="text-center mb-4">
+    <h1 class="fw-bold text-dark"> Bikes for Rent</h1>
+    <p class="text-muted">Fill out the form below to book your ride</p>
+  </div>
+
+  <!-- Rent Form Card -->
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card shadow-lg border-0 rounded-3">
+        <div class="card-body p-4">
+          <h4 class="mb-4 text-center fw-semibold">Rental Form</h4>
+
+          <form action="{% url 'rent' %}" method="post">
             {% csrf_token %}
-            {{f1.as_p}}
-          <input type="submit" class="btn btn-primary" value="Submit" name='submit'>
-        </form>
+            
+            <!-- Loop through form fields -->
+            {% for field in f1 %}
+              <div class="mb-3">
+                <label class="form-label">{{ field.label }}</label>
+                {{ field }}
+                {% if field.errors %}
+                  <div class="text-danger small">{{ field.errors }}</div>
+                {% endif %}
+              </div>
+            {% endfor %}
 
+            <!-- Submit Button -->
+            <div class="d-grid">
+              <button type="submit" class="btn btn-primary rounded-pill py-2 fw-semibold">
+                 Submit Request
+              </button>
+            </div>
+
+          </form>
+        </div>
+      </div>
     </div>
+  </div>
+
 </div>
+{% endblock %}
 
-
-{%endblock %}

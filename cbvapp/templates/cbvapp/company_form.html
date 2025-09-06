@@ -1,27 +1,53 @@
-{% extends 'base.html' %} {% block content %}
-<div class="container">
-  <div class="jumbotron">
-    
-    {% if not form.instance.pk %}
-    <h1><u>Add company here </u></h1>
-    <form enctype="multipart/form-data" method="POST">
-      {% csrf_token %} 
-      {{form.as_p}}
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-5">
 
-      <input type="submit" class="btn btn-primary" value="Add Company" />
-    </form>
-      
-    {%else %}
-      <h1>Edit Company Details </h1>
-      <form enctype="multipart/form-data" method="POST">
-        {% csrf_token %} 
-        {{form.as_p}}
+  <!-- Card Wrapper -->
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card shadow-lg border-0 rounded-3">
+        <div class="card-body p-4">
 
-        <input type="submit" class="btn btn-warning" value="ADD" />
-      </form>
-    {% endif %}
+          <!-- Title -->
+          {% if not form.instance.pk %}
+            <h2 class="fw-bold text-center mb-4">Add Company</h2>
+          {% else %}
+            <h2 class="fw-bold text-center mb-4">Edit Company Details</h2>
+          {% endif %}
 
+          <!-- Form -->
+          <form enctype="multipart/form-data" method="POST">
+            {% csrf_token %}
+            
+            <!-- Loop fields for alignment -->
+            {% for field in form %}
+              <div class="mb-3">
+                <label class="form-label">{{ field.label }}</label>
+                {{ field }}
+                {% if field.errors %}
+                  <div class="text-danger small">{{ field.errors }}</div>
+                {% endif %}
+              </div>
+            {% endfor %}
+
+            <!-- Submit Button -->
+            <div class="d-grid">
+              {% if not form.instance.pk %}
+                <button type="submit" class="btn btn-primary rounded-pill py-2 fw-semibold">
+                  Add Company
+                </button>
+              {% else %}
+                <button type="submit" class="btn btn-warning rounded-pill py-2 fw-semibold">
+                Update Company
+                </button>
+              {% endif %}
+            </div>
+          </form>
+
+        </div>
+      </div>
+    </div>
   </div>
-</div>
 
+</div>
 {% endblock %}

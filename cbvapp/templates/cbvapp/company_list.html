@@ -2,44 +2,42 @@
 
 {% block content %}
 
-    <div class="container">
-      <div class="jumbotron">
-        <h1 align="center"><u>List of bikes</u></h1>
+<div class="container mt-5">
 
-        <h4>hi this template inside app</h4>
-        <div class="row">
-          {% for comp in company_list %}
-          <div class="col-md-4">
-            <div class="card card-body">
-              {% comment %} <p align="center" ><a  href="{% url 'detail' comp.id %}">{{ comp.logo }}</a></p> {% endcomment %}
-            
+  <!-- Page Title -->
+  <div class="text-center mb-5">
+    <h1 class="fw-bold text-dark"><u>List of Bikes</u></h1>
+    <p class="text-muted">Explore top bike companies and their origins</p>
+  </div>
 
-
-              <div class="card" style="width: 18rem;">
-                
-                {% if comp.logo %}
-                  <img src="{{ comp.logo.url }}" alt='nologo' style='height:180px; align:center;'>
-                {% endif %}
-              <div class="card-body">
-                <a class="btn btn-primary" href="{% url 'detail' comp.id %}">{{ comp.name }}</a> <br><br>
-                <p>Origin: {{ comp.origin }}</p>
-              </div>
-            </div>
-
-            </div>
+  <div class="row g-4">
+    {% for comp in company_list %}
+    <div class="col-md-4">
+      <div class="card shadow-lg border-0 h-100 rounded-3 overflow-hidden">
+        
+        <!-- Company Logo -->
+        {% if comp.logo %}
+          <img src="{{ comp.logo.url }}" class="card-img-top" alt="{{ comp.name }} Logo"
+               style="height:220px; object-fit:cover;">
+        {% else %}
+          <div class="d-flex align-items-center justify-content-center bg-light" style="height:220px;">
+            <span class="text-muted">No Logo</span>
           </div>
-          {% endfor %}
+        {% endif %}
+
+        <!-- Card Body -->
+        <div class="card-body text-center">
+          <h4 class="card-title fw-bold mb-3">{{ comp.name }}</h4>
+          <p class="text-muted">🌍 Origin: <span class="fw-semibold">{{ comp.origin }}</span></p>
+          <a class="btn btn-outline-primary rounded-pill px-4 mt-2" href="{% url 'detail' comp.id %}">
+            View Details →
+          </a>
         </div>
+
       </div>
     </div>
+    {% endfor %}
+  </div>
+</div>
 
 {% endblock %}
-
-
-
-
-
-
-
-
-
