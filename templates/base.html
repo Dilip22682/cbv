@@ -36,6 +36,19 @@
           }
           
 }
+.foo{
+ background-color:rgb(247, 203, 203);
+    a{    
+          color:rgb(255, 36, 7);
+
+          }
+          a:hover{
+              color:blue;
+          }
+}
+.foo1{
+  background-color:rgb(247, 203, 203);
+}
 
 .ico li{
     list-style-type:none;
@@ -53,9 +66,9 @@
                     <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="{% url 'list' %}">AllCompanies</a></li>
                     <li class="nav-item"><a class="nav-link" href="{% url 'create' %}">AddCompanay</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'rent' %}">BikeForRent</a></li>
                     <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">Contact Us</a></li>
-                    {% comment %} <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Home</a></li> {% endcomment %}
+                    
                 </ul>
             </div>
         </div>
@@ -64,15 +77,35 @@
 
     {% endblock %}
 
-    <div class="foo">
+    {% comment %} footer {% endcomment %}
+
+    {% comment %} <div class="foo">
   <h4 style="text-align:center;color:red;font-weight:300px; font-size:50px;">Contact Us</h4>
   <div class="ico">
     <li><a href="https://mail.google.com/mail/u/0/#inbox"><i class='bx bxl-gmail bx-lg' ></i></a></li>
     <li><a href="https://www.facebook.com/"><i class='bx bxl-facebook-circle bx-lg '></i></a></li>
     <li><a href="https://www.instagram.com/"><i class='bx bxl-instagram bx-lg'></i></a></li>
     <li><a href="https://github.com/Dilip22682"><i class='bx bxl-github bx-lg'></i></a></li>
-    <li><a href="https://www.linkedin.com/in/dilip-kumar-patel-916168210?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"><i class='bx bxl-linkedin-square bx-lg'></i></i></a></li>
+    <li><a href="https://www.linkedin.com/in/dilip-kumar-patel-916168210?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"><i class='bx bxl-linkedin-square bx-lg'></i></a></li>
+    <li><a href="tel:6386698515"><i class='bx bx-phone-call bx-lg'></i></a></li>
+    <li><a href="https://web.whatsapp.com/"><i class='bx bxl-whatsapp bx-lg'></i></a></li>
   </div>
+  </div>
+</div> {% endcomment %}
+
+
+<div class="container">
+  <h4 style="text-align:center;color:red;font-weight:300px; font-size:50px;">Contact Us</h4>
+  <div class="row foo1">
+    <div class="col-2 foo"><a href="https://mail.google.com/mail/u/0/#inbox"><i class='bx bxl-gmail bx-lg' ></i></a></div>
+    <div class="col-2 foo"><a href="https://www.facebook.com/"><i class='bx bxl-facebook-circle bx-lg '></i></a></div>
+    <div class="col-2 foo"><a href="https://www.instagram.com/"><i class='bx bxl-instagram bx-lg'></i></a></div>
+    <div class="col-2 foo"><a href="https://github.com/Dilip22682"><i class='bx bxl-github bx-lg'></i></a></div>
+    <div class="col-2 foo"><a href="https://www.linkedin.com/in/dilip-kumar-patel-916168210?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"><i class='bx bxl-linkedin-square bx-lg'></i></a></div>
+    <div class="col-2 foo"><a href="https://web.whatsapp.com/"><i class='bx bxl-whatsapp bx-lg'></i></a></div>
+  
+  </div>
+
 </div>
     
 </body>

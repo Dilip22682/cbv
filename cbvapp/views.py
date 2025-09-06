@@ -2,8 +2,9 @@ from django.shortcuts import render,redirect
 from django.views import View
 from django.http import HttpResponse 
 from django.views.generic import View,TemplateView,ListView,DetailView,CreateView,UpdateView,DeleteView,FormView
-from cbvapp.models import Company,Products
+from cbvapp.models import Company,Products,RentBooking
 from django.urls import reverse_lazy
+from cbvapp.forms import Form_RentBooking
 # from cbvapp.forms import EmiCalform
 # from .forms import EmiForm
 
@@ -30,6 +31,22 @@ class UpdateCompany(UpdateView):
 class DelCompany(DeleteView):
     model=Company
     success_url=reverse_lazy('list')
+
+# class BikeRent(CreateView):
+#     model=RentBooking
+#     fields='__all__' 
+
+def BikeRent(request):
+    if request.method == 'POST':
+        fm=Form_RentBooking(request.POST)
+        if fm.is_valid():
+            fm.save()
+            return redirect('rent')
+    else:
+        fm=Form_RentBooking()
+    return render(request,'cbvapp/rentbooking_form.html',{'f1':fm})
+        
+    
     
     
 # this for emi from

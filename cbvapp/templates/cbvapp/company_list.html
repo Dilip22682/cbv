@@ -21,8 +21,6 @@
                   <img src="{{ comp.logo.url }}" alt='nologo' style='height:180px; align:center;'>
                 {% endif %}
               <div class="card-body">
-               
-                {% comment %} <a href="#" class="btn btn-primary">Go somewhere</a> {% endcomment %}
                 <a class="btn btn-primary" href="{% url 'detail' comp.id %}">{{ comp.name }}</a> <br><br>
                 <p>Origin: {{ comp.origin }}</p>
               </div>

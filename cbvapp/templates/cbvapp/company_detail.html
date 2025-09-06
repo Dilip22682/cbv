@@ -54,11 +54,19 @@
           {% else %}
           <p>No image</p>
           {% endif %}
-          <p>
+          
+
+          <button type="button" class="btn btn-dark">
             <a href="{% url 'emi' id=product.id %}" class="btn btn-outline-info"
-              >EMI</a
-            >
-          </p>
+               >EMI</a>
+               
+               <a href="{% url 'rent'  %}" class="btn btn-outline-warning">BUY</a>
+                <a href="{% url 'rent'  %}" class="btn btn-outline-danger"
+              >RENT</a>
+
+          </button>
+    
+        
         </div>
       </div>
       {% endfor %}

@@ -1,9 +1,18 @@
 
 from django import forms
+from django.forms import ModelForm
+from cbvapp.models import RentBooking
+
+
 
     
    
 # code
+
+class Form_RentBooking(forms.ModelForm):
+    class Meta:
+        model=RentBooking
+        fields='__all__'
 
 # class EmiCalform(forms.ModelForm):
     # total__loan_amt=forms.IntegerField()

@@ -11,5 +11,7 @@ urlpatterns=[
     path("edit/<int:pk>/",views.UpdateCompany.as_view(),name='edit'),
     path("delete/<int:pk>/",views.DelCompany.as_view(),name='delete'),
     path('emi/<int:id>',views.displayEmi,name='emi'),
+    # path('rent/',views.BikeRent.as_view(),name='rent'),
+    path('rent/',views.BikeRent,name='rent'),
     
 ]

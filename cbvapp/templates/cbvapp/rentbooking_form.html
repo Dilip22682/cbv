@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{%block content %}
+<div class="container">
+    <div class="jumbotron">
+        <h1>Bikes for Rent  </h1>
+        <form action="{% url 'rent' %}" method="post">
+            {% csrf_token %}
+            {{f1.as_p}}
+          <input type="submit" class="btn btn-primary" value="Submit" name='submit'>
+        </form>
+
+    </div>
+</div>
+
+
+{%endblock %}

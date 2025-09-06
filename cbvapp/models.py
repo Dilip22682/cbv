@@ -30,3 +30,17 @@ class Products(models.Model):
     def __str__(self):
         return self.product_name
 
+
+class RentBooking(models.Model):
+    customer_name=models.CharField(max_length=50)
+    customer_mobile=models.IntegerField()
+    customer_ID=models.CharField(max_length=40)
+    customer_driving_licence_id=models.CharField(max_length=80)
+    Bike_name=models.CharField(max_length=50)
+    bike_number=models.IntegerField()
+    
+    def __str__(self):
+        return self.customer_name
+    
+    
+
