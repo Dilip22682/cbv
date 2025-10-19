@@ -70,12 +70,14 @@ USE_TZ = True
 
 # ===== Static files configuration =====
 STATIC_URL = '/static/'
+STATIC_ROOT = BASE_DIR / 'staticfiles'   # <- Add this
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]  # your global static folder
 # STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')   # for collectstatic in production
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 # ===== Media files configuration =====
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')  # folder to store uploaded files
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')  # folder to store uploaded files
+MEDIA_ROOT = BASE_DIR / 'media'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
