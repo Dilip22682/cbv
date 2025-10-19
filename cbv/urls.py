@@ -27,5 +27,9 @@ urlpatterns = [
     path('', views.html_page.as_view(),name='home'),
     path('admin/', admin.site.urls,name='admin'),
     path('companies/', include('cbvapp.urls'),name='companies'),
-    ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    ]
+
+# +static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

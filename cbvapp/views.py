@@ -81,7 +81,7 @@ def displayEmi(request,id):
         tensure = int(request.POST['months'])
         interest = int(request.POST['rate'])
         # loan_exceeded=amount<product_data.price
-        if amount<product_data.price:
+        if amount< product_data.price:
             # print("loan exceeded:",loan_exceeded)
             r = interest / (interest * 100)
             numerator = amount * r * (1+r) ** tensure
